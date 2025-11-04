@@ -194,7 +194,7 @@ export default function ArtisanDashboard() {
             <button
               onClick={() => loadDashboardData()}
               disabled={refreshing}
-              className="flex items-center space-x-2 bg-background text-text-secondary px-4 py-2 rounded-lg hover:bg-secondary transition border border-border shadow-sm"
+              className="flex items-center space-x-2 bg-background text-text-secondary px-4 py-2 rounded-lg hover:bg-secondary transition border border-border"
             >
               <RefreshCw className={`w-5 h-5 ${refreshing ? 'animate-spin' : ''}`} />
               <span>Refresh</span>
@@ -203,24 +203,16 @@ export default function ArtisanDashboard() {
             <select
               value={selectedTimeRange}
               onChange={(e) => setSelectedTimeRange(e.target.value)}
-              className="px-4 py-2 border border-border rounded-lg bg-background focus:ring-2 focus:ring-accent focus:border-transparent shadow-sm"
+              className="px-4 py-2 border border-border rounded-lg bg-background focus:ring-2 focus:ring-accent focus:border-transparent"
             >
               <option value="7">Last 7 days</option>
               <option value="30">Last 30 days</option>
               <option value="90">Last 90 days</option>
             </select>
-
-            <Link
-              to="/artisan/creative-studio"
-              className="flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-accent transition shadow-lg"
-            >
-              <Video className="w-5 h-5" />
-              <span>Creative Studio</span>
-            </Link>
             
             <button
               onClick={() => setShowProductForm(true)}
-              className="flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-accent transition shadow-lg"
+              className="flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-accent transition border border-primary hover:border-accent"
             >
               <Plus className="w-5 h-5" />
               <span>Add Product</span>
@@ -264,7 +256,7 @@ export default function ArtisanDashboard() {
 
         {/* Alerts & Notifications */}
         {lowStockProducts.length > 0 && (
-          <div className="bg-secondary border-l-4 border-orange-500 p-4 mb-8 rounded-lg shadow-sm">
+          <div className="bg-secondary border-l-4 border-orange-500 border border-orange-200 p-4 mb-8 rounded-lg">
             <div className="flex items-start">
               <AlertTriangle className="w-6 h-6 text-orange-500 mt-0.5 mr-3" />
               <div className="flex-1">
@@ -287,7 +279,7 @@ export default function ArtisanDashboard() {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
           {/* Revenue Chart */}
-          <div className="lg:col-span-2 bg-background rounded-xl shadow-xl p-6">
+          <div className="lg:col-span-2 bg-background rounded-xl border border-gray-200 p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-h3 font-bold text-text-primary">Revenue Trends</h2>
               <button className="text-accent hover:text-accent text-sm font-semibold flex items-center space-x-1">
@@ -324,7 +316,7 @@ export default function ArtisanDashboard() {
           </div>
 
           {/* Recent Activity Feed */}
-          <div className="bg-background rounded-xl shadow-xl p-6">
+          <div className="bg-background rounded-xl border border-gray-200 p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-h3 font-bold text-text-primary">Recent Activity</h2>
               <Bell className="w-5 h-5 text-text-tertiary" />
@@ -369,7 +361,7 @@ export default function ArtisanDashboard() {
               onClick={() => setShowAITab(showAITab === 'inventory' ? null : 'inventory')}
               className={`p-4 rounded-lg border-2 transition-all ${
                 showAITab === 'inventory'
-                  ? 'bg-secondary border-accent shadow-lg'
+                  ? 'bg-secondary border-accent'
                   : 'bg-background border-border hover:border-accent'
               }`}
             >
@@ -381,7 +373,7 @@ export default function ArtisanDashboard() {
               onClick={() => setShowAITab(showAITab === 'market' ? null : 'market')}
               className={`p-4 rounded-lg border-2 transition-all ${
                 showAITab === 'market'
-                  ? 'bg-secondary border-accent shadow-lg'
+                  ? 'bg-secondary border-accent'
                   : 'bg-background border-border hover:border-accent'
               }`}
             >
@@ -393,7 +385,7 @@ export default function ArtisanDashboard() {
               onClick={() => setShowAITab(showAITab === 'customers' ? null : 'customers')}
               className={`p-4 rounded-lg border-2 transition-all ${
                 showAITab === 'customers'
-                  ? 'bg-secondary border-accent shadow-lg'
+                  ? 'bg-secondary border-accent'
                   : 'bg-background border-border hover:border-accent'
               }`}
             >
@@ -405,7 +397,7 @@ export default function ArtisanDashboard() {
               onClick={() => setShowAITab(showAITab === 'business' ? null : 'business')}
               className={`p-4 rounded-lg border-2 transition-all ${
                 showAITab === 'business'
-                  ? 'bg-secondary border-accent shadow-lg'
+                  ? 'bg-secondary border-accent'
                   : 'bg-background border-border hover:border-accent'
               }`}
             >
@@ -417,7 +409,7 @@ export default function ArtisanDashboard() {
               onClick={() => setShowAITab(showAITab === 'description' ? null : 'description')}
               className={`p-4 rounded-lg border-2 transition-all ${
                 showAITab === 'description'
-                  ? 'bg-secondary border-accent shadow-lg'
+                  ? 'bg-secondary border-accent'
                   : 'bg-background border-border hover:border-accent'
               }`}
             >
@@ -456,7 +448,7 @@ export default function ArtisanDashboard() {
         {/* Top Products & AI Features */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Top Performing Products */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-6">Top Performing Products</h2>
             
             {topProducts.length === 0 ? (
@@ -467,12 +459,12 @@ export default function ArtisanDashboard() {
             ) : (
               <div className="space-y-4">
                 {topProducts.map((product, index) => (
-                  <div key={product.id} className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition group">
+                  <div key={product.id} className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition group border border-transparent hover:border-gray-200">
                     <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
                       {index + 1}
                     </div>
                     
-                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-100">
+                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
                       {product.primary_image_url ? (
                         <img src={product.primary_image_url} alt={product.name} className="w-full h-full object-cover" />
                       ) : (
@@ -498,7 +490,7 @@ export default function ArtisanDashboard() {
           </div>
 
           {/* AI-Powered Quick Actions */}
-          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl shadow-lg p-6 border border-indigo-100">
+          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">
             <h2 className="text-xl font-bold text-gray-900 mb-6">AI-Powered Tools</h2>
             
             <div className="space-y-3">
@@ -581,7 +573,7 @@ export default function ArtisanDashboard() {
         </div>
 
         {/* Products Management */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900">Product Management</h2>
             <div className="flex space-x-3">
@@ -598,7 +590,7 @@ export default function ArtisanDashboard() {
               <p className="text-gray-600 mb-4">No products yet</p>
               <button
                 onClick={() => setShowProductForm(true)}
-                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition shadow-lg"
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition border border-indigo-600 hover:border-indigo-700"
               >
                 Add Your First Product
               </button>
@@ -626,7 +618,7 @@ export default function ArtisanDashboard() {
 
 function MetricCard({ icon, title, value, change, trend, subtitle, gradient }: any) {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+    <div className="bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 transition-colors">
       <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center text-white mb-4`}>
         {icon}
       </div>
@@ -655,7 +647,7 @@ function QuickActionCard({ icon, title, description, onClick, gradient }: any) {
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center space-x-4 p-4 rounded-lg bg-white hover:shadow-md transition-all group border border-gray-100"
+      className="w-full flex items-center space-x-4 p-4 rounded-lg bg-white hover:border-gray-300 transition-all group border border-gray-100"
     >
       <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center text-white flex-shrink-0 group-hover:scale-110 transition-transform`}>
         {icon}
@@ -672,7 +664,7 @@ function FeatureCard({ icon, title, description, onClick, gradient }: any) {
   return (
     <button
       onClick={onClick}
-      className={`bg-gradient-to-br ${gradient} rounded-lg p-5 text-left hover:shadow-lg transition-all cursor-pointer group`}
+      className={`bg-gradient-to-br ${gradient} rounded-lg p-5 text-left hover:ring-2 hover:ring-offset-1 transition-all cursor-pointer group border border-transparent`}
     >
       <div className="mb-3 group-hover:scale-110 transition-transform">{icon}</div>
       <h3 className="font-semibold text-gray-900 mb-1 text-sm">{title}</h3>
@@ -802,7 +794,7 @@ function ProductFormModal({ onClose, onSuccess }: any) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 shadow-2xl">
+      <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 border border-gray-200">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Add New Product</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -932,7 +924,7 @@ function AIContentModal({ onClose }: any) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 shadow-2xl">
+      <div className="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 border border-gray-200">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">AI Content Generator</h2>
         
         <div className="space-y-4">

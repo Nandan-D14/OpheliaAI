@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import './index.css';
 
@@ -86,8 +87,9 @@ function App() {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <BrowserRouter>
+        <LanguageProvider>
+          <AuthProvider>
+            <BrowserRouter>
             {/* Floating AI Widget with separate Suspense boundary */}
             <Suspense fallback={<FloatingWidgetFallback />}>
               <FloatingAIWidget />
@@ -215,6 +217,41 @@ function App() {
                 />
                 
                 {/* Additional feature routes - lazy loaded */}
+                {/* Agent Mode Routes */}
+                <Route 
+                  path="/artisan/agent-mode/control-center" 
+                  element={
+                    <ProtectedRoute requiredRole="artisan">
+                      <AIControlCenter />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/artisan/agent-mode/social-commerce" 
+                  element={
+                    <ProtectedRoute requiredRole="artisan">
+                      <SocialCommercePage />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/artisan/agent-mode/sustainability" 
+                  element={
+                    <ProtectedRoute requiredRole="artisan">
+                      <SustainabilityPage />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/artisan/agent-mode/cross-border" 
+                  element={
+                    <ProtectedRoute requiredRole="artisan">
+                      <CrossBorderPage />
+                    </ProtectedRoute>
+                  } 
+                />
+                
+                {/* Legacy routes for backward compatibility */}
                 <Route 
                   path="/artisan/social-commerce" 
                   element={
@@ -278,8 +315,9 @@ function App() {
                 />
               </Routes>
             </Suspense>
-          </BrowserRouter>
-        </AuthProvider>
+            </BrowserRouter>
+          </AuthProvider>
+        </LanguageProvider>
       </QueryClientProvider>
     </ErrorBoundary>
   );
